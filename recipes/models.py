@@ -1,14 +1,15 @@
 from django.db import models
 
-class Ingredient(models.Model):
-    name = models.CharField(max_length=50, null=False)
+#TODO: Add User field, Step field later
+class Recipe(models.Model):
+    name = models.CharField(max_length=100, null=False)
 
     def __str__(self):
         return self.name
 
-#TODO: Add User field, Step field later
-class Recipe(models.Model):
-    name = models.CharField(max_length=100, null=False)
+class Ingredient(models.Model):
+    name = models.CharField(max_length=50, null=False)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
