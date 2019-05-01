@@ -1,11 +1,16 @@
-from rest_framework import generics
 from .models import Recipe
 from .serializers import RecipeSerializer
 
-class RecipeList(generics.ListCreateAPIView):
-    queryset = Recipe.objects.all()
-    serializer_class = RecipeSerializer
+from rest_framework import viewsets
 
-class RecipeDetail(generics.RetrieveUpdateDestroyAPIView):
+#class RecipeView(generics.RetrieveUpdateDestroyAPIView):
+#    queryset = Recipe.objects.all()
+#    serializer_class = RecipeSerializer
+#
+#    @classmethod
+#    def get_extra_actions(cls):
+#        return []
+
+class RecipeViewSet(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
